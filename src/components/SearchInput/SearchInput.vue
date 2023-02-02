@@ -17,38 +17,17 @@
 </template>
 
 <script lang="ts">
+import useFetchData from "./composables/useFetchData";
 import SearchResult from "../SearchResult";
-import { Data } from "../SearchResult/types";
-import { ref, watch, defineComponent } from "vue";
+import { ref, defineComponent, onServerPrefetch } from "vue";
 export default defineComponent({
   components: { SearchResult },
   setup() {
     const inputText = ref<string>("");
-    const serverResponse = ref([]);
-    const timeoutId = ref();
-    const isFetching = ref(false);
 
-    function fetchData() {
-      if (!inputText.value) return;
-      isFetching.value = true;
-      clearTimeout(timeoutId.value);
+    const { isFetching, serverResponse } = useFetchData(inputText);
 
-      timeoutId.value = setTimeout(async () => {
-        const url = new URL("https://nominatim.openstreetmap.org/search");
-        url.searchParams.append("city", String(inputText.value));
-        url.searchParams.append("format", "json");
-        url.searchParams.append("limit", "10");
-
-        const res = await fetch(String(url));
-        serverResponse.value = await res.json();
-
-        isFetching.value = false;
-      }, 500);
-    }
-
-    watch(inputText, async () => {
-      await fetchData();
-    });
+    onServerPrefetch(() => {});
 
     return { inputText, serverResponse, isFetching };
   },

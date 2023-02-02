@@ -6,20 +6,17 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, toRefs, PropType } from "vue";
+import { defineComponent, toRefs } from "vue";
 import { Data } from "./types";
+import type { PropType } from "vue";
 
 export default defineComponent({
   props: {
-    dataObject: {
-      type: Object as PropType<Data>,
-      default: () => {},
-    },
+    dataObject: Object as PropType<Data>,
   },
-  setup(props) {
-    const { dataObject } = toRefs(props);
 
-    return dataObject;
+  setup(props) {
+    return props.dataObject;
   },
 });
 </script>
