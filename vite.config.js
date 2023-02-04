@@ -1,6 +1,7 @@
 import { defineConfig } from 'vite'
 import vuePlugin from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
+import path from 'path'
 
 const virtualFile = '@virtual-file'
 const virtualId = '\0' + virtualFile
@@ -113,4 +114,9 @@ export default defineConfig(({ command, ssrBuild }) => ({
   build: {
     minify: false,
   },
+  resolve: {
+    alias: {
+      '@': path.resolve(__dirname, './src'),
+    },
+  }
 }))

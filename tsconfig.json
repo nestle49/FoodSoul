@@ -4,7 +4,10 @@
     "module": "esnext",
     "strict": true,
     "jsx": "preserve",
-    "moduleResolution": "node"
+    "moduleResolution": "node",
+    "paths": {
+      "@/*": ["./src/*", "./dist/*"]
+    }
   },
   "include": [
     "src/**/*.ts",

@@ -6,7 +6,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, toRefs } from "vue";
+import { defineComponent } from "vue";
 import { Data } from "./types";
 import type { PropType } from "vue";
 
