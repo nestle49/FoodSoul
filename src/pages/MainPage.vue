@@ -8,7 +8,7 @@
 <script lang="ts" setup>
 import { useDynamicLoadComponent } from '@/composables/useDynamicComponent';
 
-const { dynamicLoadComponent } = useDynamicLoadComponent('Test2');
+const { dynamicLoadComponent } = useDynamicLoadComponent('Test');
 </script>
 
 <style lang="scss">
