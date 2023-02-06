@@ -1,16 +1,14 @@
 <template>
   <div class="container">
-    <SearchInput />
+    <h1>Minimal reproduction</h1>
+    <component :is="dynamicLoadComponent" />
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent } from "vue";
-import SearchInput from "../components/SearchInput";
-export default defineComponent({
-  components: { SearchInput },
-  setup() {},
-});
+<script lang="ts" setup>
+import { useDynamicLoadComponent } from '@/composables/useDynamicComponent';
+
+const { dynamicLoadComponent } = useDynamicLoadComponent('Test2');
 </script>
 
 <style lang="scss">
